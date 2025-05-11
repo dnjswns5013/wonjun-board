@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.myprj.token.RefreshTokenMapper">
+
+    <insert id="saveOrUpdate" parameterType="com.example.myprj.token.RefreshToken">
+        INSERT INTO refresh_token (username, token, expiration)
+        VALUES (#{username}, #{token}, #{expiration})
+        ON DUPLICATE KEY UPDATE
+        token = VALUES(token),
+        expiration = VALUES(expiration)
+    </insert>
+
+    <select id="findByUsername" parameterType="string" resultType="com.example.myprj.token.RefreshToken">
+        SELECT * FROM refresh_token WHERE username = #{username}
+    </select>
+
+    <delete id="deleteByUsername" parameterType="string">
+        DELETE FROM refresh_token WHERE username = #{username}
+    </delete>
+
+</mapper>

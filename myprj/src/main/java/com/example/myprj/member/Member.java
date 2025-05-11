@@ -1,5 +1,7 @@
 package com.example.myprj.member;
 
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,6 @@ public class Member {
     private String email; // 이메일
     private String state; // 상태 (ACTIVE, WITHDRAWN, SUSPENDED, BANNED)
     private String role; // 권한 (USER, BOARD_MANAGER, ADMIN)
-    private String createdAt; // 가입일시
+    private LocalDateTime createdAt; // 가입일시
     
 }
